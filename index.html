@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3somy Store911</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .catalog {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      width: 280px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 10px;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .product.added h3::after {
+      content: " ✅";
+      color: green;
+      font-size: 18px;
+    }
+
+    .price {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #checkoutBtn {
+      display: block;
+      margin: 30px auto;
+      background-color: #007bff;
+    }
+
+    #cartDetails {
+      display: none;
+      margin: 40px auto;
+      max-width: 500px;
+      text-align: right;
+      padding: 20px;
+      border-top: 2px solid #ccc;
+    }
+
+    #cartDetails ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    #cartDetails li {
+      margin-bottom: 10px;
+    }
+
+    #total {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #payBtn {
+      background-color: #25d366;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 style="color: #1a1a1a; font-size: 50px; font-weight: bold; margin-bottom: 10px; text-shadow: 2px 2px 4px #888;">
+    💥 3somy Store911 💥
+  </h1>
+    
+  <h2 style="color: #1e90ff; font-size: 26px; margin-bottom: 10px; letter-spacing: 1px;">Otaku Wear</h2>
+
+    <h3 style="color:#b22222; font-size: 22px; margin-bottom: 25px;">👆 أرخص أسعار في مصر بإذن الله</h3>
+</div>
+  </div>
+
+  <div class="catalog" id="productCatalog">
+    <!-- كل منتج -->
+    <div class="product" data-name="Satoru hoodie" data-price="600">
+      <img src="https://m.media-amazon.com/images/I/51Wwwa5j5UL._AC_SY580_.jpg" />
+      <h3>Satoru hoodie</h3>
+      <p class="price">السعر: 600ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Itachi hoodie" data-price="550">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4sXaLkLY2WndGLrGlof8YdY_ZPbWvyadsbg&s" />
+      <h3>Itachi hoodie</h3>
+      <p class="price">السعر: 550ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Naruto hoodie" data-price="650">
+      <img src="https://oldnavy.gapcanada.ca/webcontent/0056/618/647/cn56618647.jpg" />
+      <h3>Naruto hoodie</h3>
+      <p class="price">السعر:650ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Sasuke hoodie" data-price="600">
+      <img src="https://ae01.alicdn.com/kf/Sc6baea2a560e4c2fbdfbc16f50d4739d4.jpg?width=800&height=800&hash=1600" />
+      <h3>Sasuke hoodie</h3>
+      <p class="price">السعر:600ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Eren hoodie" data-price="600">
+      <img src="https://m.media-amazon.com/images/I/41pKMtdgynL._AC_SY1000_.jpg" />
+      <h3>Eren hoodie</h3>
+      <p class="price">السعر: 600ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Ronaldo hoodie" data-price="660">
+      <img src="https://www.ubuy.ke/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjFIdURLUTBpVUwuX0FDX1VMMTUwMF8uanBn.jpg" />
+      <h3>Ronaldo hoodie</h3>
+      <p class="price">السعر:660ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Mbappe hoodie" data-price="660">
+      <img src="https://www.thegunsofbrixton.co.uk/images/hoodies/kylian-mbappe-football-soccer-hero-legend-adults-red-hoodie.jpg" />
+      <h3>Mbappe hoodie</h3>
+      <p class="price">السعر:660ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product" data-name="Hala madrid hoodie" data-price="660">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxQnchSuRbkH5pNputdp8eLbRPoOPmB4tbZw&s" />
+      <h3>Hala madrid hoodie</h3>
+      <p class="price">السعر:660ج</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <!-- زر الذهاب للحساب -->
+  <button id="checkoutBtn" onclick="showCheckout()">اذهب للحساب</button>
+
+  <!-- قسم عرض السلة -->
+  <div id="cartDetails">
+    <h2>تفاصيل الطلب:</h2>
+    <ul id="cartItems"></ul>
+    <p id="total"></p>
+    <a id="whatsappLink" target="_blank">
+      <button id="payBtn">اضغط للدفع</button>
+    </a>
+  </div>
+
+  <script>
+    const cart = [];
+
+    function addToCart(button) {
+      const product = button.parentElement;
+      const name = product.dataset.name;
+      const price = parseInt(product.dataset.price);
+
+      // تأكد إنه مش مكرر
+      if (!cart.find(item => item.name === name)) {
+        cart.push({ name, price });
+        product.classList.add("added");
+      }
+    }
+
+    function showCheckout() {
+      const list = document.getElementById("cartItems");
+      const totalBox = document.getElementById("total");
+      const cartSection = document.getElementById("cartDetails");
+      const whatsappLink = document.getElementById("whatsappLink");
+
+      list.innerHTML = "";
+      let total = 0;
+      let message = "مرحبًا، أود طلب المنتجات التالية:\n";
+
+      cart.forEach(item => {
+        list.innerHTML += `<li>${item.name} - ${item.price} جنيه</li>`;
+        total += item.price;
+        message += `- ${item.name} (${item.price} جنيه)\n`;
+      });
+
+      totalBox.innerText = `الإجمالي: ${total} جنيه`;
+      whatsappLink.href = `https://wa.me/201009691189?text=${encodeURIComponent(message + "\nالإجمالي: " + total + " جنيه")}`;
+
+      cartSection.style.display = "block";
+    }
+  </script>
+</body>
+</html>
